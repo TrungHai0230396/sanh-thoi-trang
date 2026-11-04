@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sảnh thời trang · màn hình live</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap">
+  <link rel="stylesheet" href="css/figure.css">
+  <link rel="stylesheet" href="css/overlay.css">
+</head>
+<body>
+  <div id="stage">
+    <div class="hall" aria-hidden="true">
+      <div class="truss"></div>
+      <div class="beam b1"></div>
+      <div class="beam b2"></div>
+      <div class="beam b3"></div>
+      <div class="beam b4"></div>
+      <div class="led">
+        <div class="led-grid"></div>
+        <div class="led-text">
+          <div id="brand" class="led-brand">SẢNH THỜI TRANG</div>
+          <div id="tagline" class="led-tagline">LIVE FASHION SHOW</div>
+        </div>
+      </div>
+      <div id="door" class="door"></div>
+      <div class="floor"></div>
+      <div id="runway" class="runway"><div class="runway-shine"></div></div>
+      <div id="runway-lights" class="runway-lights"></div>
+    </div>
+
+    <div id="crowd"></div>
+    <div id="walkers"></div>
+    <canvas id="fx" width="1080" height="1920"></canvas>
+    <div id="whiteout"></div>
+
+    <div id="cover" class="cover" hidden>
+      <div id="cover-mast" class="cover-mast">SẢNH</div>
+      <div id="cover-issue" class="cover-issue"></div>
+      <div class="cover-lines">
+        <div class="cover-kicker">Biểu tượng phong cách đêm nay</div>
+        <div id="cover-name" class="cover-name"></div>
+        <div id="cover-look" class="cover-look"></div>
+      </div>
+    </div>
+
+    <div id="sim" class="sim" hidden>GIẢ LẬP · người xem và quà là giả</div>
+    <div class="banner"><div id="banner-text" class="banner-text"></div></div>
+    <div id="ticker" class="ticker"></div>
+
+    <section class="card likes">
+      <div class="likes-row"><span class="likes-heart">♥</span><span id="likes-total">0</span></div>
+      <div class="likes-bar"><div id="likes-fill" class="likes-fill"></div></div>
+      <div id="likes-note" class="likes-note"></div>
+    </section>
+
+    <section id="poll" class="card poll" hidden>
+      <h2>BÌNH CHỌN</h2>
+      <div id="poll-options" class="poll-options"></div>
+      <div id="poll-note" class="poll-note"></div>
+    </section>
+
+    <section class="card board">
+      <h2>TOP FASHIONISTA</h2>
+      <ol id="board-list"></ol>
+      <p id="board-empty" class="board-empty">Chưa có ai trên bảng</p>
+    </section>
+
+    <div id="namecard" class="namecard" hidden>
+      <div id="nc-kicker" class="nc-kicker"></div>
+      <div id="nc-name" class="nc-name"></div>
+      <div id="nc-look" class="nc-look"></div>
+      <div id="nc-gift" class="nc-gift"></div>
+    </div>
+
+    <section id="legend" class="card legend"><ul id="legend-list"></ul></section>
+    <!-- The host's camera goes over this frame in OBS or LIVE Studio: 300 x 400 at x 758, y 1290. -->
+    <div id="camera" class="camera" hidden><span>📷 Đặt camera người dẫn vào khung này</span></div>
+
+    <div id="safe" class="safe" hidden>
+      <div class="safe-box safe-top">Vùng TikTok che: tên kênh, người xem</div>
+      <div class="safe-box safe-comments">Vùng bình luận của TikTok</div>
+      <div class="safe-box safe-bottom">Thanh dưới của TikTok</div>
+    </div>
+
+    <button id="sound" class="sound" type="button" hidden>🔈 Bấm để bật âm thanh</button>
+  </div>
+  <script type="module" src="js/overlay.js"></script>
+</body>
+</html>

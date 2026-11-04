@@ -1,0 +1,7 @@
+node_modules/
+data/
+.DS_Store
+.venv/
+__pycache__/
+vieneu/model/
+.claude/settings.local.json

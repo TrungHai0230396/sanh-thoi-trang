@@ -1,0 +1,19 @@
+{
+  "name": "sanh-thoi-trang",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sảnh thời trang tương tác cho TikTok LIVE (bản mẫu)",
+  "type": "module",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js",
+    "setup:voice": "sh vieneu/setup.sh"
+  },
+  "optionalDependencies": {
+    "tiktok-live-connector": "^2.5.0"
+  }
+}

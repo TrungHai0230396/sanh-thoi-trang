@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Điều khiển · Sảnh thời trang</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Sảnh thời trang</h1>
+    <span id="pill-tiktok" class="pill">TikTok: chưa kết nối</span>
+    <span id="pill-sim" class="pill" hidden>Đang giả lập</span>
+    <nav>
+      <a href="/" target="_blank" rel="noopener">Màn hình live ↗</a>
+      <a href="/wardrobe.html" target="_blank" rel="noopener">Tủ đồ ↗</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <div class="col">
+      <section class="panel">
+        <h2>Kết nối TikTok</h2>
+        <p class="hint">Bật live trên TikTok trước, rồi nhập tên kênh (chỉ tên, không cần mật khẩu hay cookie).
+          Kết nối dùng thư viện không chính thức: TikTok đổi gì là có thể hỏng. Phần này chưa thử với live thật.</p>
+        <form id="tiktok-form" class="row">
+          <label class="grow"><span class="sr">Tên kênh</span><input id="tiktok-user" name="username" placeholder="@ten_kenh" autocomplete="off" spellcheck="false"></label>
+          <button type="submit">Kết nối</button>
+          <button type="button" id="tiktok-off" class="ghost">Ngắt</button>
+        </form>
+        <p id="tiktok-msg" class="msg" role="status"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Giả lập</h2>
+        <div class="row">
+          <button type="button" id="sim-toggle">Bật giả lập</button>
+          <label>Mức đông
+            <select id="sim-rate">
+              <option value="vang">Vắng</option>
+              <option value="vua" selected>Vừa</option>
+              <option value="dong">Đông</option>
+            </select>
+          </label>
+          <button type="button" class="ghost" data-host="clear-sim">Xóa người giả</button>
+        </div>
+        <p class="hint">Người xem và quà giả có nhãn đỏ "GIẢ LẬP" trên màn hình live. Kết nối TikTok thì người giả tự rời sảnh và bảng.</p>
+        <div class="grid">
+          <button type="button" data-test="join">Khách vào xem</button>
+          <button type="button" data-test="chat">Bình luận</button>
+          <button type="button" data-test="like">Thả tim</button>
+          <button type="button" data-test="follow">Theo dõi</button>
+          <button type="button" data-test="share">Chia sẻ</button>
+          <button type="button" data-gift="1">Quà nhỏ · 1 xu</button>
+          <button type="button" data-gift="30">Quà vừa · 30 xu</button>
+          <button type="button" data-gift="199">Quà lớn · 199 xu</button>
+        </div>
+        <form id="custom" class="custom">
+          <label>Tên<input name="name" placeholder="Mai Anh" maxlength="24" autocomplete="off"></label>
+          <label>Bình luận<input name="text" placeholder="cho mình mặc áo dài nha" maxlength="80" autocomplete="off"></label>
+          <label>Quà<input name="giftName" placeholder="Hoa hồng" maxlength="30" autocomplete="off"></label>
+          <label>Xu<input name="coins" type="number" min="1" step="1" value="1"></label>
+          <div class="row">
+            <button type="submit" name="kind" value="chat">Gửi bình luận</button>
+            <button type="submit" name="kind" value="gift">Gửi quà</button>
+            <button type="submit" name="kind" value="follow">Theo dõi kênh</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Điều khiển sảnh</h2>
+        <div class="grid">
+          <button type="button" data-host="pose-all">📸 Cả sảnh tạo dáng</button>
+          <button type="button" data-host="house-walk">💃 Người mẫu của sảnh diễn</button>
+          <button type="button" data-host="poll-start">🗳️ Mở bình chọn</button>
+          <button type="button" data-host="poll-end">⏹ Chốt bình chọn</button>
+          <button type="button" data-host="remind-follow">📣 MC nhắc theo dõi kênh</button>
+          <button type="button" class="ghost" data-host="clear-hall">Dọn sảnh</button>
+          <button type="button" class="ghost" data-host="reset-board">Làm mới bảng xếp hạng</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Giọng MC</h2>
+        <p id="voice-info" class="hint">Đang tìm giọng tiếng Việt trên máy…</p>
+        <div class="voice">
+          <label class="wide">Giọng đọc<select id="voice-name"></select></label>
+          <label class="check"><input id="voice-on" type="checkbox"> Giọng MC đọc tên</label>
+          <label>Tốc độ đọc <output id="voice-rate-out"></output><input id="voice-rate" type="range" min="140" max="240" step="5"></label>
+          <label>Âm lượng giọng<input id="voice-volume" type="range" min="0" max="1" step="0.05"></label>
+          <label class="wide">Câu nghe thử<input id="voice-text" maxlength="200" value="Xin chào cả sảnh! Mời Mai Anh bước lên sàn diễn với bộ Áo dài đỏ!"></label>
+          <div class="row wide">
+            <button type="button" id="voice-test">▶ Nghe thử (chỉ ở trang này)</button>
+            <button type="button" id="voice-save" class="ghost">Lưu giọng</button>
+            <span id="voice-msg" class="msg" role="status"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Cài đặt</h2>
+        <form id="settings" class="settings">
+          <label>Tên sảnh<input name="brand" maxlength="28"></label>
+          <label>Dòng phụ<input name="tagline" maxlength="36"></label>
+          <label>Quà vừa từ (xu)<input name="mediumCoins" type="number" min="1" step="1"></label>
+          <label>Quà lớn từ (xu)<input name="largeCoins" type="number" min="2" step="1"></label>
+          <label>Số chỗ trong sảnh<input name="hallSize" type="number" min="6" max="24" step="1"></label>
+          <label>Số tim để cả sảnh tạo dáng<input name="likesForPose" type="number" min="10" step="10"></label>
+          <label>Người mẫu của sảnh diễn sau (giây, 0 = tắt)<input name="houseWalkSeconds" type="number" min="0" step="5"></label>
+          <label>Thời gian bình chọn (giây)<input name="pollSeconds" type="number" min="10" step="5"></label>
+          <label>Thưởng khi theo dõi kênh
+            <select name="followReward">
+              <option value="show">Lên sàn diễn</option>
+              <option value="item">Thêm một món đồ</option>
+              <option value="off">Không thưởng, chỉ cảm ơn</option>
+            </select>
+          </label>
+          <label>MC nhắc theo dõi mỗi (phút, 0 = tắt)<input name="followReminderMinutes" type="number" min="0" max="60" step="1"></label>
+          <p class="hint wide">Mỗi người chỉ được thưởng lần theo dõi đầu tiên trong buổi, bỏ theo dõi rồi theo dõi lại không được thêm.
+            Khi đã có 4 người chờ lên sàn vì theo dõi, người theo dõi sau được thêm một món đồ. Theo luật TikTok, nội dung tìm
+            cách lôi kéo người xem theo dõi có thể không được đề xuất trên trang Dành cho bạn: nếu bị cảnh báo, chọn "Không thưởng".</p>
+          <label class="check"><input name="music" type="checkbox"> Nhạc nền</label>
+          <label>Âm lượng nhạc<input name="musicVolume" type="range" min="0" max="1" step="0.05"></label>
+          <label>Âm lượng hiệu ứng<input name="sfxVolume" type="range" min="0" max="1" step="0.05"></label>
+          <label class="check"><input name="legend" type="checkbox"> Hiện bảng hướng dẫn</label>
+          <label class="wide">Bảng hướng dẫn (mỗi dòng một ý, tối đa 5)<textarea name="legendLines" rows="4"></textarea></label>
+          <label class="check wide"><input name="camera" type="checkbox"> Chừa khung camera người dẫn (góc phải dưới, thay bảng hướng dẫn: các dòng của bảng chạy trên banner)</label>
+          <label class="check"><input name="safeArea" type="checkbox"> Hiện vùng giao diện TikTok che (để canh bố cục)</label>
+          <div class="row wide"><button type="submit">Lưu cài đặt</button><span id="settings-msg" class="msg" role="status"></span></div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Nhật ký</h2>
+        <ol id="log" class="log"></ol>
+      </section>
+    </div>
+
+    <aside class="preview">
+      <div class="frame"><iframe src="/?muted=1" title="Xem trước màn hình live"></iframe></div>
+      <p class="hint">Xem trước, không có tiếng. Trong OBS: thêm nguồn Trình duyệt (Browser), địa chỉ
+        <code>http://localhost:3100/</code>, khung 1080 × 1920.</p>
+    </aside>
+  </main>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

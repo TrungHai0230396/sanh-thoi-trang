@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tủ đồ · Sảnh thời trang</title>
+  <link rel="stylesheet" href="css/figure.css">
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; background: #120b1f; color: #f4eefb; font: 15px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 14px 16px; position: sticky; top: 0; background: #120b1fee; z-index: 2; }
+    h1 { font-size: 18px; margin: 0 12px 0 0; }
+    h2 { font-size: 16px; margin: 18px 16px 10px; color: #ffd166; }
+    button { background: #2a1d45; color: inherit; border: 1px solid #4a3878; border-radius: 8px; padding: 6px 12px; font: inherit; cursor: pointer; }
+    button[aria-pressed="true"] { background: #ff4f9a; border-color: #ff4f9a; color: #fff; }
+    #zoom { margin-left: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; padding: 0 16px 8px; }
+    .card { background: radial-gradient(circle at 50% 30%, #34215c, #1b1230); border-radius: 12px; padding: 10px 6px; text-align: center; }
+    .stand { position: relative; height: 330px; }
+    .stand .fig { left: 50%; bottom: 6px; transform: translateX(-50%) scale(.5); }
+    .zoomed .grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+    .zoomed .stand { height: 650px; }
+    .zoomed .stand .fig { transform: translateX(-50%) scale(1); }
+    .name { font-weight: 600; font-size: 14px; }
+    .id { opacity: .6; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tủ đồ</h1>
+    <button type="button" data-mode="" aria-pressed="true">Đứng</button>
+    <button type="button" data-mode="walking">Đi</button>
+    <button type="button" data-mode="pose-1">Dáng 1</button>
+    <button type="button" data-mode="pose-2">Dáng 2</button>
+    <button type="button" data-mode="pose-3">Dáng 3</button>
+    <button type="button" data-mode="cheer">Cổ vũ</button>
+    <button type="button" id="zoom" aria-pressed="false">Phóng to</button>
+  </header>
+  <main id="sections"></main>
+  <script type="module" src="js/wardrobe.js"></script>
+</body>
+</html>

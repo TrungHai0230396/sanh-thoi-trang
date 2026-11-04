@@ -1,0 +1,107 @@
+/* The figure drawn by figure.js: 200 x 624 px at scale 1, its feet at the bottom
+   centre. Poses and steps move the SVG groups around their own joints. */
+
+.fig {
+  position: absolute;
+  width: 200px;
+  height: 624px;
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+.fig svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.fig.flip svg { transform: scaleX(-1); }
+
+.fig .f-body { transform-box: fill-box; transform-origin: 50% 100%; }
+.fig .f-head { transform-box: fill-box; transform-origin: 50% 100%; }
+.fig .f-leg { transform-box: fill-box; transform-origin: 50% 1%; }
+.fig .f-arm { transform-box: fill-box; transform-origin: 50% 2%; }
+.fig .f-skirt { transform-box: fill-box; transform-origin: 50% 0%; }
+.fig .f-body, .fig .f-head, .fig .f-leg, .fig .f-arm { transition: transform .35s ease; }
+
+/* Jewellery and sequins catch the light now and then. */
+.fig .f-twinkle {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: f-twinkle 2.8s ease-in-out infinite;
+}
+@keyframes f-twinkle {
+  0%, 72%, 100% { opacity: 0; transform: scale(.2); }
+  82% { opacity: 1; transform: scale(1); }
+}
+
+/* Walking toward the camera: the stepping foot crosses in, the other lifts. */
+.fig.walking .f-body { animation: f-walk-body 1s ease-in-out infinite; }
+.fig.walking .f-leg-l { animation: f-walk-leg-l 1s ease-in-out infinite; }
+.fig.walking .f-leg-r { animation: f-walk-leg-r 1s ease-in-out infinite; }
+.fig.walking .f-arm-l { animation: f-walk-arm-l 1s ease-in-out infinite; }
+.fig.walking .f-arm-r { animation: f-walk-arm-r 1s ease-in-out infinite; }
+.fig.walking .f-skirt { animation: f-walk-skirt 1s ease-in-out infinite; }
+
+@keyframes f-walk-body {
+  0%, 100% { transform: translateY(0) rotate(-1.2deg); }
+  25%, 75% { transform: translateY(-6px) rotate(0deg); }
+  50% { transform: translateY(0) rotate(1.2deg); }
+}
+@keyframes f-walk-leg-l {
+  0%, 100% { transform: rotate(-3deg) scaleY(1); }
+  50% { transform: rotate(1deg) scaleY(.94); }
+}
+@keyframes f-walk-leg-r {
+  0%, 100% { transform: rotate(-1deg) scaleY(.94); }
+  50% { transform: rotate(3deg) scaleY(1); }
+}
+@keyframes f-walk-arm-l {
+  0%, 100% { transform: rotate(7deg); }
+  50% { transform: rotate(-3deg); }
+}
+@keyframes f-walk-arm-r {
+  0%, 100% { transform: rotate(3deg); }
+  50% { transform: rotate(-7deg); }
+}
+@keyframes f-walk-skirt {
+  0%, 100% { transform: skewX(2deg); }
+  50% { transform: skewX(-2deg); }
+}
+
+/* Standing in the hall. */
+.fig.idle .f-body { animation: f-idle 3.6s ease-in-out infinite; animation-delay: var(--d, 0s); }
+@keyframes f-idle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(.9deg); }
+}
+
+/* Poses at the end of the runway, and for the whole hall at once. */
+.fig.pose-1 .f-body { transform: rotate(-2deg); }
+.fig.pose-1 .f-head { transform: rotate(5deg); }
+.fig.pose-1 .f-arm-l { transform: rotate(24deg); }
+.fig.pose-1 .f-arm-r { transform: rotate(-8deg); }
+.fig.pose-1 .f-leg-r { transform: rotate(5deg) scaleY(.97); }
+
+.fig.pose-2 .f-body { transform: rotate(2deg); }
+.fig.pose-2 .f-head { transform: rotate(-4deg); }
+.fig.pose-2 .f-arm-l { transform: rotate(10deg); }
+.fig.pose-2 .f-arm-r { transform: rotate(-158deg); }
+.fig.pose-2 .f-leg-l { transform: rotate(4deg); }
+
+.fig.pose-3 .f-arm-l { transform: rotate(32deg); }
+.fig.pose-3 .f-arm-r { transform: rotate(-32deg); }
+.fig.pose-3 .f-leg-l { transform: rotate(5deg); }
+.fig.pose-3 .f-leg-r { transform: rotate(-5deg); }
+
+.fig.cheer .f-body { animation: f-cheer .42s ease-in-out infinite alternate; }
+.fig.cheer .f-arm-l { transform: rotate(150deg); }
+.fig.cheer .f-arm-r { transform: rotate(-150deg); }
+@keyframes f-cheer {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fig.idle .f-body, .fig.cheer .f-body { animation: none; }
+}
