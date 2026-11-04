@@ -6,6 +6,11 @@ Chạy trên máy của bạn, đưa vào OBS như một trang web.
 
 Đây là **bản mẫu**: chế độ giả lập đã chạy và có test. Kết nối TikTok đã viết nhưng **chưa thử với live thật**.
 
+<p align="center">
+  <img src="docs/hinh-anh/demo.gif" width="360" alt="Màn hình live: người xem bình luận rồi bước vào sảnh, thả tim cho cả sảnh tạo dáng, người tặng quà vừa lên sàn catwalk, người tặng quà lớn lên trang bìa">
+</p>
+<p align="center"><sub>Quay ở chế độ giả lập (người xem và quà là giả, nên có nhãn đỏ "GIẢ LẬP"). GIF không có tiếng; khi chạy có nhạc nền và giọng MC.</sub></p>
+
 ## Chạy
 
 Cần Node.js 20 trở lên.
@@ -20,6 +25,8 @@ npm start
 - Trang điều khiển: http://localhost:3100/admin.html
 - Tủ đồ (29 bộ lên sàn, 35 phụ kiện và trang sức, dáng đi, dáng tạo): http://localhost:3100/wardrobe.html
 
+![Trang điều khiển: kết nối TikTok, nút giả lập và bắn từng sự kiện, điều khiển sảnh, bên phải là màn hình live thu nhỏ](docs/hinh-anh/trang-dieu-khien.png)
+
 Server chỉ nghe trên máy này (`127.0.0.1`). Muốn đổi cổng: `PORT=4000 npm start`.
 
 ## Đưa lên live
@@ -33,7 +40,16 @@ Từng bước, từ tài khoản tới lúc tắt live: [HUONG-DAN-LIVE.md](HUO
    hoặc khóa những buổi live tĩnh không có người thật. Bản mẫu này không có mẹo né kiểm duyệt nào, và đừng thêm vào.
 3. Trong trang điều khiển: bật "Hiện vùng giao diện TikTok che" để canh bố cục (vùng che chỉ là ước lượng).
 
+<p align="center">
+  <img src="docs/hinh-anh/bo-cuc-live.jpg" width="270" alt="Màn hình live khi bật khung camera người dẫn (góc phải dưới) và vùng giao diện TikTok che (sọc đỏ: tên kênh ở trên, bình luận ở dưới bên trái, thanh dưới cùng)">
+</p>
+<p align="center"><sub>Bật cả hai: khung camera người dẫn ở góc phải dưới, sọc đỏ là chỗ giao diện TikTok che.</sub></p>
+
 ## Luật chơi
+
+| Bình luận, gõ phong cách | Đủ tim: cả sảnh tạo dáng | Quà vừa: lên sàn catwalk | Quà lớn: lên trang bìa |
+|:-:|:-:|:-:|:-:|
+| <img src="docs/hinh-anh/vao-sanh.jpg" width="200" alt="Người xem bước vào sảnh, bong bóng chữ ghi bộ đồ muốn mặc"> | <img src="docs/hinh-anh/tao-dang.jpg" width="200" alt="Đủ 300 tim, cả sảnh giơ tay tạo dáng, đèn flash và pháo giấy"> | <img src="docs/hinh-anh/len-san.jpg" width="200" alt="Người tặng quà vừa đứng trên sàn catwalk với thẻ tên và tên bộ đồ"> | <img src="docs/hinh-anh/trang-bia.jpg" width="200" alt="Người tặng quà lớn lên trang bìa tạp chí, đội vương miện, pháo giấy"> |
 
 | Người xem làm | Trên màn hình |
 |---|---|
@@ -108,10 +124,13 @@ Nhập tên kênh trong trang điều khiển khi kênh **đang live**. Không c
 - `npm test` kiểm mọi bộ và mọi món đều vẽ được, và không có từ khóa nào thuộc hai bộ.
 - Xem kết quả ở trang Tủ đồ. Tránh logo thương hiệu thật và đồ hở hang (luật TikTok).
 
+![Trang Tủ đồ: các bộ lên sàn kèm từ khóa, nút xem theo dáng đứng, đi, tạo dáng, cổ vũ](docs/hinh-anh/tu-do.png)
+
 ## Cấu trúc
 
 ```
 HUONG-DAN-LIVE.md    hướng dẫn lên live: tài khoản, LIVE Studio hoặc OBS, camera, kiểm tra, lỗi thường gặp
+docs/hinh-anh/       ảnh và GIF trong README, chụp ở chế độ giả lập
 server.js            server: trang, luồng sự kiện (SSE), API điều khiển
 src/game.js          luật chơi: sảnh, hàng chờ trình diễn, bình chọn, bảng xếp hạng
 src/simulator.js     người xem giả
